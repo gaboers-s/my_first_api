@@ -17,3 +17,14 @@ def get_random_quotes():
         return None
 
     return random.choice(all_quotes)
+
+def get_random_count(count):
+    all_quotes = get_all_quotes()
+
+    if not all_quotes:
+        return None
+
+    try:
+        return random.sample(all_quotes, count)
+    except:
+        return random.choices(all_quotes, k = count)

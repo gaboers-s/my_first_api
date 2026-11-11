@@ -25,3 +25,14 @@ def get_quotes():
         )
 
     return quote
+
+@router.get("/random/{count}")
+def get_quotes(count: int):
+    quote = quote_service.get_random_count(count)
+    
+    if quote is None:
+         raise HTTPException(
+            status_code= 404,
+            details = "No quotes Available"
+        )
+    return quote
